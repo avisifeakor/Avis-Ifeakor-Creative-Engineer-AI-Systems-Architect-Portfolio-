@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-serif: 'Newsreader', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: #111827;
+  }
+
+  .dark body {
+    color: #F9FAFB;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Dynamic Reactive Cursor System - Desktop Fine Pointer Reset */
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor button,
+  html.has-custom-cursor a,
+  html.has-custom-cursor [role="button"],
+  html.has-custom-cursor .cursor-pointer,
+  html.has-custom-cursor .cursor-grab,
+  html.has-custom-cursor .cursor-grabbing {
+    cursor: none !important;
+  }
+
+  /* Retain native text cursor for effortless form inputs */
+  html.has-custom-cursor input[type="text"],
+  html.has-custom-cursor input[type="email"],
+  html.has-custom-cursor textarea {
+    cursor: text !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.45);
+}
+
+/* Diagonal stripes pattern for sun badge */
+.bg-striped-sun {
+  background: repeating-linear-gradient(
+    -45deg,
+    #F7D46E,
+    #F7D46E 4px,
+    #F2C746 4px,
+    #F2C746 8px
+  );
+}
+
+.dark .bg-striped-sun {
+  background: repeating-linear-gradient(
+    -45deg,
+    #F59E0B,
+    #F59E0B 4px,
+    #D97706 4px,
+    #D97706 8px
+  );
+}
+
+/* Cassette tape subtle texture */
+.cassette-body {
+  background: radial-gradient(circle at 50% 30%, #ffffff 0%, #EDE9DE 100%);
+  box-shadow: 0 20px 40px -15px rgba(35, 30, 20, 0.2), 0 2px 6px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.8);
+}
+
+.dark .cassette-body {
+  background: radial-gradient(circle at 50% 30%, #222838 0%, #151926 100%);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.1);
+}
+
+/* Paper airplane dashed trail */
+.flight-path {
+  stroke-dasharray: 6, 6;
+  animation: dashOffset 20s linear infinite;
+}
+
+@keyframes dashOffset {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee2 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee2 {
+  animation: marquee2 35s linear infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.animate-sway {
+  animation: sway 4s ease-in-out infinite;
+}
